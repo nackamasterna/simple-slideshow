@@ -133,7 +133,7 @@ var Slide = /** @class */ (function () {
     }
     Slide.prototype._init = function () {
         this.container = document.createElement('div');
-        //this.container.classList.add(this.transition);
+        this.container.classList.add(this.transition);
         this.content = document.createElement(this.tagName);
         this.container.appendChild(this.content);
         this.bindEvents();
@@ -154,10 +154,12 @@ var Slide = /** @class */ (function () {
         this.fallbackSrc = this.srcArray[1] || '';
     };
     Slide.prototype.in = function () {
-        this.container.classList.add(this.transition);
+        this.container.classList.remove('out');
+        this.container.classList.add('in');
     };
     Slide.prototype.out = function () {
-        this.container.classList.remove(this.transition);
+        this.container.classList.remove('in');
+        this.container.classList.add('out');
     };
     return Slide;
 }());
@@ -200,7 +202,7 @@ var SlideShow = /** @class */ (function () {
             _this._bindEvents();
             _this._loadSlides(_this.opts.sources);
             _this.slides[_this.next].in();
-            _this.wait = _this.opts.interval;
+            _this.interval();
             _this._cue();
         };
         this._bindEvents = function () {
@@ -216,12 +218,14 @@ var SlideShow = /** @class */ (function () {
             _this.parent.appendChild(_this.slideshow);
         };
         this._onFirstLoaded = function (e) {
-            if (!_this.opts.ensureAllLoaded) {
+            e.stopPropagation();
+            if (_this.opts.autostart && !_this.opts.ensureAllLoaded) {
                 _this.start();
             }
         };
-        this._onAllLoaded = function () {
-            if (!_this.running) {
+        this._onAllLoaded = function (e) {
+            e.stopPropagation();
+            if (_this.opts.autostart && !_this.running) {
                 _this.start();
             }
             ;

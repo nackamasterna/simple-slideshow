@@ -19,34 +19,8 @@ module.exports = {
             loader: 'ts-loader'
         }]
     },
-    plugins: [
-        new webpack.optimize.UglifyJsPlugin({
-          include: /\.min\.js$/,
-          minimize: true
-        })
-    ],
     resolve: {
         extensions: ['webpack.js', 'web.js', '.ts', '.tsx', '.js']
     },
     watch: true
 }
-
-
-// module.exports = {
-//     entry: './src/app.ts',
-//     output: {
-//       filename: 'dist/bundle.js'
-//     },
-//     resolve: {
-//       extensions: ['.ts', '.js', '.tsx', '.jsx', '']
-//     },
-//     module: {
-//       loaders: [
-//         {
-//           test: /\.tsx?$/,
-//           exclude: /node_modules/,
-//           loader: 'ts-loader'
-//         }
-//       ]
-//     }
-//   }

@@ -3,16 +3,44 @@
   display: block;
   overflow: hidden;
 }
-  .simple-slideshow > div {
+  .simple-slideshow > div.fade {
     position: absolute;
     opacity: 0;
     transition: 1s opacity;
     width: 100%;
   }
-  .simple-slideshow > div.fade {
+  .simple-slideshow > div.fade.in {
     opacity: 1;
     position: static;
     transition: 1s opacity;
+  }
+
+  .simple-slideshow > div.drop {
+    position: absolute;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    top: -100% !important;
+  }
+  .simple-slideshow > div.drop.in {
+    position: static;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    top: 0% !important;
+  }
+  .simple-slideshow > div.drop.out {
+    position: absolute;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    top: 100% !important;
   }
   
   .simple-slideshow img, .simple-slideshow video {

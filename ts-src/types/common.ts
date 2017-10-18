@@ -1,6 +1,7 @@
 export type SlideshowOptions = {
     transition: string
     sources: string[];
+    autostart: boolean;
     loop: boolean;
     interval: number;
     ignoreNotLoaded: boolean;

@@ -48,7 +48,7 @@ export class SlideShow {
         this._bindEvents();
         this._loadSlides(this.opts.sources);
         this.slides[this.next].in();        
-        this.wait = this.opts.interval;
+        this.interval();
         this._cue();        
     };
 
@@ -67,11 +67,13 @@ export class SlideShow {
     }
 
     private _onFirstLoaded = (e) => {
-        if (!this.opts.ensureAllLoaded) { this.start() }   
+        e.stopPropagation();
+        if (this.opts.autostart && !this.opts.ensureAllLoaded) { this.start() }   
     }
 
-    private _onAllLoaded = () => {
-        if (!this.running) { this.start() };
+    private _onAllLoaded = (e) => {
+        e.stopPropagation()
+        if (this.opts.autostart && !this.running) { this.start() };
     }
 
 	private _slide = () => {

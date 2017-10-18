@@ -19,9 +19,9 @@ export class Slide implements ISlide {
     protected srcArray: string[];
     protected primarySrc: string;
     protected fallbackSrc: string;
-    public index: number;
-    public loaded: boolean = false;
     public container: HTMLDivElement;    
+    public loaded: boolean = false;
+    public index: number;
     public duration: number;
     
     constructor(index: number, src: string, transition: string) {
@@ -32,7 +32,7 @@ export class Slide implements ISlide {
 
     protected _init(): void {
         this.container = document.createElement('div');
-        //this.container.classList.add(this.transition);
+        this.container.classList.add(this.transition);
         this.content = document.createElement(this.tagName);
         this.container.appendChild(this.content);
         this.bindEvents();
@@ -56,11 +56,13 @@ export class Slide implements ISlide {
     }
 
     public in(): void {
-        this.container.classList.add(this.transition);
+        this.container.classList.remove('out');
+        this.container.classList.add('in');
     }
 
     public out(): void {
-        this.container.classList.remove(this.transition)
+        this.container.classList.remove('in')
+        this.container.classList.add('out');
     }
 
 }
