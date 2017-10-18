@@ -1,0 +1,20 @@
+.simple-slideshow {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+  .simple-slideshow > div {
+    position: absolute;
+    opacity: 0;
+    transition: 1s opacity;
+    width: 100%;
+  }
+  .simple-slideshow > div.fade {
+    opacity: 1;
+    position: static;
+    transition: 1s opacity;
+  }
+  
+  .simple-slideshow img, .simple-slideshow video {
+    width: 100%;
+  }
