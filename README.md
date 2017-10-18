@@ -1,6 +1,6 @@
 # simple-slideshow
 
-Slideshow component that can display image and video content. No external dependencies
+Slideshow component that can display image and video content. No framework dependencies
 
 ## Useage 
 
@@ -14,8 +14,7 @@ var slideshow = new SimpleSlideShow.SlideShow(HTMLElement, SlideshowOptions, Cal
 ## Options
 
     transition: string          ** 'fade', 'drop'
-    sources: string[]; 
-                                -Sources should be an array of urls to images and or webcompatible video. 
+    sources: string[]           ** Sources should be an array of urls to images and or webcompatible video. 
                                 For each source string you can also add a fallback src, which will be added as an 'alt' attribute
                                 in case of images, and as a fallback 'src' element in video. Add fallback with delimiter ';'
                                 ie;
@@ -32,4 +31,12 @@ var slideshow = new SimpleSlideShow.SlideShow(HTMLElement, SlideshowOptions, Cal
     ignoreNotLoaded: boolean;   ** If next slide is not loaded, skip and proceed to next.
     ensureAllLoaded: boolean;   ** If autostart is set to true, this waits for all slides loaded before starting, instead of just first.
     onClick: Function;          ** Slideshow click event.
+
+## Public methods
+
+    start() ** start/resume running
+    stop()  ** stop and pointer to 0
+    paus()  ** paus
+
+
 

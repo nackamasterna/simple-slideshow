@@ -230,6 +230,11 @@ var SlideShow = /** @class */ (function () {
             }
             ;
         };
+        this._onCompleted = function () {
+            if (_this.callback) {
+                window.setTimeout(function () { _this.callback(); }, _this.wait);
+            }
+        };
         this._slide = function () {
             _this.slides[_this.curr].out();
             _this.slides[_this.next].in();
@@ -246,12 +251,7 @@ var SlideShow = /** @class */ (function () {
                 _this.opts.loop ? _this.next = 0 : _this.stop();
             }
             if (_this.opts.ignoreNotLoaded && !_this.slides[_this.next].loaded) {
-                window.setTimeout(function () { _this._setNext(); }, 100);
-            }
-        };
-        this._onCompleted = function () {
-            if (_this.callback) {
-                window.setTimeout(function () { _this.callback(); }, _this.wait);
+                window.setTimeout(function () { _this._setNext(); }, 50);
             }
         };
         this._run = function () {
@@ -302,7 +302,7 @@ var SlideLoader = /** @class */ (function () {
                     _this.slides.push(new video_slide_1.VideoSlide(i, src, t));
                     break;
                 default:
-                    console.error('SimpleSlideShow::Source type unsupported: ', src);
+                    console.error('SimpleSlideShow::Source type unsupported, not loaded: ', src);
                     break;
             }
         };

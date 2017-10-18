@@ -26,7 +26,7 @@ export class SlideLoader {
                 this.slides.push(new VideoSlide(i, src, t))
                 break;
             default:
-                console.error('SimpleSlideShow::Source type unsupported: ', src);
+                console.error('SimpleSlideShow::Source type unsupported, not loaded: ', src);
                 break;
         }
     }

@@ -27,7 +27,7 @@ export class SlideShow {
         this._init();
     }
     
-    public interval = (x?: number) => {
+    public interval = (x?: number): number => {
         this.wait = x > 0 ? x : this.opts.interval;
         return this.wait;
     }
@@ -75,6 +75,12 @@ export class SlideShow {
         e.stopPropagation()
         if (this.opts.autostart && !this.running) { this.start() };
     }
+    
+    private _onCompleted = () => {
+        if (this.callback) {
+            window.setTimeout(() => { this.callback() }, this.wait);
+        }
+    }
 
 	private _slide = () => {
         this.slides[this.curr].out();
@@ -94,17 +100,11 @@ export class SlideShow {
             this.opts.loop ? this.next = 0 : this.stop();
         }
         if (this.opts.ignoreNotLoaded && !this.slides[this.next].loaded) {
-            window.setTimeout(() => {this._setNext()}, 100);
-        }
-    }
-
-    private _onCompleted = () => {
-        if (this.callback) {
-            window.setTimeout(() => { this.callback() }, this.wait);
+            window.setTimeout(() => {this._setNext()}, 50);
         }
     }
     
-	private _run = () => {
+    private _run = () => {
         window.setTimeout(() => {
             if (this.slides[this.next].loaded || this.opts.ignoreNotLoaded ) {
                 this._slide();
