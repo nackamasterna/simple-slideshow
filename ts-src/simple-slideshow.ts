@@ -17,7 +17,7 @@ export class SlideShow {
     private parent: HTMLElement;
     
     constructor(element, opts, callback) {
-		this.parent = element;
+        this.parent = element;
         this.opts = opts;
         this.callback = callback;
         this.slideshow = document.createElement('div');
@@ -75,7 +75,7 @@ export class SlideShow {
         e.stopPropagation()
         if (this.opts.autostart && !this.running) { this.start() };
     }
-    
+
     private _onCompleted = () => {
         if (this.callback) {
             window.setTimeout(() => { this.callback() }, this.wait);
@@ -86,7 +86,7 @@ export class SlideShow {
         this.slides[this.curr].out();
         this.slides[this.next].in();
         this.interval(this.slides[this.next].duration);
-        this._cue();           
+        this._cue();
     }
 
 	private _cue = () => {

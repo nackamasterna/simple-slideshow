@@ -34,9 +34,10 @@ var slideshow = new SimpleSlideShow.SlideShow(HTMLElement, SlideshowOptions, Cal
 
 ## Public methods
 
-    start() ** start/resume running
-    stop()  ** stop and pointer to 0
-    paus()  ** paus
+    start()     ** start/resume running
+    stop()      ** stop and pointer to 0
+    paus()      ** paus at current
+    interval()  ** get/set
 
 
 
